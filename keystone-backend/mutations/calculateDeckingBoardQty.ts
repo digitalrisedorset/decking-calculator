@@ -41,15 +41,15 @@ async function calculateDeckingBoardQuantity(
         height: string
         width: string
         shape: string
-        boardLength: string
-        joistLength: string
+        boardLength: number
+        joistLength: number
     },
     context: Context
 ): Promise<{ deckingBoards: number; joists: number }> {
     const parsedHeight = parseFloat(height)
     const parsedWidth = parseFloat(width)
-    const parsedBoardLength = parseFloat(boardLength)
-    const parsedJoistLength = parseFloat(joistLength)
+    const parsedBoardLength = boardLength
+    const parsedJoistLength = joistLength
 
     switch (shape) {
         case 'rectangle':

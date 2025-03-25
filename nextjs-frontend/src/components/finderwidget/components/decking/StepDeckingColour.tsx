@@ -32,7 +32,7 @@ export const StepDeckingColour: React.FC = () => {
     const getProductColours = (product) => {
         return product?.configurable_options.map((option: any) => {
             return (option?.values.map((value:any) => {
-                return <Colour colour={value} />
+                return <Colour key={value.uid} colour={value} />
             }))
         })
     }

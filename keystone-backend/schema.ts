@@ -41,8 +41,8 @@ export function extendGraphqlSchema (baseSchema: GraphQLSchema) {
               height: String!
               width: String!
               shape: String!
-              boardLength: String!
-              joistLength: String!
+              boardLength: Int!
+              joistLength: Int!
             ): DeckingCalculationResult!
           }
 
