@@ -1,0 +1,8 @@
+version: "3.8"
+services:
+  mongo:
+    container_name: decking-db
+    image: mongo:latest
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
