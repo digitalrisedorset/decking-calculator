@@ -16,8 +16,17 @@ const GET_MAGENTO_PRODUCT_COLOUR_QUERY = gql`
                 label
               }
              }
-           }
+             variants {
+              product {
+                sku
+              }
+              attributes {
+                code
+                value_index
+              }
+            }
           }
+         }
        }
     }
 `;

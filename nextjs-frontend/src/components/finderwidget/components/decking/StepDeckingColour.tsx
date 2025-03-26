@@ -30,9 +30,25 @@ export const StepDeckingColour: React.FC = () => {
     if (loading) return <Loading />
 
     const getProductColours = (product) => {
+        const findVariantSku = (variants, value_index) => {
+            for (const variant of variants) {
+                const match = variant.attributes.every(attr => {
+                    return value_index === attr.value_index;
+                });
+
+                if (match) {
+                    return variant.product.sku;
+                }
+            }
+
+            return null; // no match
+        }
+
+
         return product?.configurable_options.map((option: any) => {
             return (option?.values.map((value:any) => {
-                return <Colour key={value.uid} colour={value} />
+                const sku = findVariantSku(product.variants, value.value_index)
+                return <Colour key={value.uid} colour={value} sku={sku} />
             }))
         })
     }

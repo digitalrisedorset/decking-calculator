@@ -11,4 +11,3 @@ export interface MagentoProductQueryResult extends QueryResult {
         items: MagentoProduct[]
     }
 }
-

@@ -3,15 +3,16 @@ import {useDeckingCalculator} from "@/state/DeckingCalculatorState";
 import {getNextCalculationStep} from "@/components/finderwidget/lib/decking";
 
 interface ProductProps {
-    colour: any
+    colour: number,
+    sku: string
 }
 
-export const Colour: React.FC = ({colour}: ProductProps) => {
+export const Colour: React.FC = ({colour, sku}: ProductProps) => {
     const {setDeckingColour, setStep, deckingState} = useDeckingCalculator()
 
     async function onClick(e: React.FormEvent) {
         e.preventDefault(); // stop the form from submitting
-        setDeckingColour(colour.value_index)
+        setDeckingColour(sku)
         setStep(getNextCalculationStep(deckingState.step))
     }
 

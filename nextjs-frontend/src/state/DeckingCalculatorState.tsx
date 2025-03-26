@@ -4,11 +4,12 @@ import {DeckingStep} from "@/components/finderwidget/lib/decking";
 
 type DeckingProduct = {
     sku: string;
-    length: number
+    length: number;
 };
 
 interface DeckingCalculatorState {
-    step: DeckingStep
+    cartId: string,
+    step: DeckingStep,
     shape: string,
     width: number | null,
     height: number | null,
@@ -19,11 +20,12 @@ interface DeckingCalculatorState {
 }
 
 const intialState: DeckingCalculatorState = {
+    cartId: '',
     step: '',
     shape: '',
     width: null,
     height: null,
-    deckingTypProducte: { sku: '', length: 0 },
+    deckingTypProduct: { sku: '', length: 0 },
     deckingMaterialProduct: { sku: '', length: 0 },
     deckingColour: ''
 }
@@ -38,6 +40,11 @@ interface DeckingCalculatorProviderProps {
 const DeckingCalculatorProvider: React.FC<DeckingCalculatorProviderProps> = ({ children }) => {
     const [state, setState] = useImmer<DeckingCalculatorState>(intialState);
 
+    const setCartId = useCallback((id: string) => {
+        setState(draft => { draft.cartId = id });
+        //localStorage.setItem('magento_cart_id', id);
+    }, [setState]);
+
     const setDeckingShape = useCallback((shape: string) => {
         setState(draft => { draft.shape = shape });
     }, [setState]);
@@ -51,11 +58,11 @@ const DeckingCalculatorProvider: React.FC<DeckingCalculatorProviderProps> = ({ c
     }, [setState]);
 
     const setDeckingType = useCallback((deckingType: string, length: number) => {
-        setState(draft => { draft.deckingTypeProduct = { deckingType, length } });
+        setState(draft => { draft.deckingTypeProduct = { sku: deckingType, length } });
     }, [setState]);
 
     const setDeckingMaterial = useCallback((deckingMaterial: string, length: number) => {
-        setState(draft => { draft.deckingMaterialProduct = { deckingMaterial, length } });
+        setState(draft => { draft.deckingMaterialProduct = { sku: deckingMaterial, length } });
     }, [setState]);
 
     const setDeckingColour = useCallback((deckingColour: string) => {
@@ -70,6 +77,7 @@ const DeckingCalculatorProvider: React.FC<DeckingCalculatorProviderProps> = ({ c
     return (
         <LocalStateProvider
             value={{
+                setCartId,
                 setDeckingShape,
                 setDeckingWidth,
                 setDeckingHeight,

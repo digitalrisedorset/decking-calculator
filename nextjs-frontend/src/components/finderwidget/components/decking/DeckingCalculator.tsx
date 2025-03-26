@@ -9,13 +9,11 @@ import {StepDeckingType} from "@/components/finderwidget/components/decking/Step
 import {StepDeckingColour} from "@/components/finderwidget/components/decking/StepDeckingColour";
 import {StepDeckingMaterial} from "@/components/finderwidget/components/decking/StepDeckingMaterial";
 import {DeckingSummary} from "@/components/finderwidget/components/decking/DeckingSummary";
-
-export interface DeckingCalculatorProps {
-    categoryIds: number[]
-}
+import {useCreateCart} from "@/components/finderwidget/hooks/useCreateCart";
 
 export const DeckingCalculator: React.FC = () => {
     const {deckingState} = useDeckingCalculator()
+    const { cartId } = useCreateCart();
 
     return (
         <WomenFinderStyle>
