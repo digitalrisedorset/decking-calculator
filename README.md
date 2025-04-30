@@ -1,4 +1,6 @@
 # Decking Calculator
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
 > ⚠️ This project is designed to work alongside an existing Magento 2 instance and requires some manual data mapping and KeystoneJS setup.  
 > It is intended as a functional prototype or reference implementation — not a plug-and-play solution.  
 > For questions about setting it up or adapting it to your system, feel free to reach out.
@@ -90,3 +92,7 @@ It requires setup effort and is not production-ready without Magento and Keyston
 
 For demo, experimentation, or as a base for future development.
 
+## License
+
+This project is licensed under the GNU General Public License v3.0.  
+See the [LICENSE](./LICENSE) file for full details.
